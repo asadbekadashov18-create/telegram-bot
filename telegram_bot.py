@@ -128,13 +128,8 @@ def search_songs(query, count=15):
 def download_audio(url):
     tmp_dir = tempfile.mkdtemp()
     ydl_opts = {
-        "format": "bestaudio/best",
+        "format": "bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio/best",
         "outtmpl": os.path.join(tmp_dir, "%(title)s.%(ext)s"),
-        "postprocessors": [{
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "192",
-        }],
         "quiet": True,
         "no_warnings": True,
     }
@@ -193,13 +188,8 @@ def download_media(url, audio_only=False):
     tmp_dir = tempfile.mkdtemp()
     if audio_only:
         ydl_opts = {
-            "format": "bestaudio/best",
+            "format": "bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio/best",
             "outtmpl": os.path.join(tmp_dir, "%(title)s.%(ext)s"),
-            "postprocessors": [{
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "mp3",
-                "preferredquality": "192",
-            }],
             "quiet": True,
             "no_warnings": True,
         }
